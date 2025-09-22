@@ -3,66 +3,326 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register for TechCon 2024</title>
-    <link rel="stylesheet" href="styles.css"> <!-- optional external stylesheet -->
+    <title>Register for TechCon 2024 - Conference Registration</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            min-height: 100vh;
+        }
+        
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        h1 {
+            margin: 0;
+            padding: 20px 0;
+            text-align: center;
+            font-size: 2.5em;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        nav {
+            background: #2c3e50;
+            padding: 0;
+        }
+        
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        nav li {
+            margin: 0;
+        }
+        
+        nav a {
+            display: block;
+            padding: 15px 25px;
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+        
+        nav a:hover {
+            background: #34495e;
+            border-bottom-color: #3498db;
+            transform: translateY(-2px);
+        }
+        
+        main {
+            padding: 40px 0;
+            min-height: calc(100vh - 300px);
+        }
+        
+        .form-container {
+            background: rgba(255, 255, 255, 0.95);
+            margin: 20px auto;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            max-width: 600px;
+        }
+        
+        .form-container h2 {
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-size: 2em;
+            text-align: center;
+        }
+        
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 1.1em;
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #ecf0f1;
+            border-radius: 10px;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+            background: white;
+        }
+        
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="password"]:focus {
+            border-color: #3498db;
+            outline: none;
+            box-shadow: 0 0 10px rgba(52, 152, 219, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin: 0;
+            cursor: pointer;
+            accent-color: #3498db;
+        }
+        
+        .checkbox-label {
+            flex: 1;
+            cursor: pointer;
+            color: #555;
+            line-height: 1.5;
+        }
+        
+        .checkbox-label a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        
+        .checkbox-label a:hover {
+            text-decoration: underline;
+        }
+        
+        button {
+            background: linear-gradient(45deg, #3498db, #2980b9);
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            font-size: 1.2em;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        button:hover {
+            background: linear-gradient(45deg, #2980b9, #1f5f8b);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(52, 152, 219, 0.3);
+        }
+        
+        button:active {
+            transform: translateY(-1px);
+        }
+        
+        .form-info {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 0 10px 10px 0;
+        }
+        
+        .form-info h3 {
+            margin: 0 0 10px 0;
+            color: #1976d2;
+        }
+        
+        .form-info p {
+            margin: 0;
+            color: #555;
+        }
+        
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: auto;
+        }
+        
+        footer p {
+            margin: 0;
+            font-size: 1em;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+                padding: 15px 0;
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav a {
+                text-align: center;
+            }
+            
+            .form-container {
+                margin: 20px;
+                padding: 30px 20px;
+            }
+            
+            .container {
+                padding: 0 10px;
+            }
+            
+            input[type="text"],
+            input[type="email"],
+            input[type="password"] {
+                padding: 12px;
+            }
+            
+            button {
+                padding: 15px 30px;
+                font-size: 1.1em;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Header -->
     <header>
-        <h1>Register for TechCon 2024</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="schedule.html">Schedule</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
+        <div class="container">
+            <h1>Register for TechCon 2024</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="schedule.html">Schedule</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <!-- Main Content -->
     <main>
-        <form action="submit_registration.php" method="post">
-            <!-- Full Name -->
-            <div>
-                <label for="fullname">Full Name:</label>
-                <input type="text" id="fullname" name="fullname" required>
+        <div class="container">
+            <div class="form-container">
+                <h2>Join TechCon 2024</h2>
+                
+                <div class="form-info">
+                    <h3>Conference Details</h3>
+                    <p>Three days of cutting-edge technology presentations, hands-on workshops, and networking opportunities. Early bird registration ends soon!</p>
+                </div>
+                
+                <form action="#" method="post">
+                    <div class="form-group">
+                        <label for="fullname">Full Name</label>
+                        <input type="text" id="fullname" name="fullname" required placeholder="Enter your full name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required placeholder="Enter your email address">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required placeholder="Create a secure password">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="confirm-password">Confirm Password</label>
+                        <input type="password" id="confirm-password" name="confirm-password" required placeholder="Re-enter your password">
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="terms" name="terms" required>
+                            <label for="terms" class="checkbox-label">
+                                I agree to the <a href="#" target="_blank">Terms and Conditions</a> and <a href="#" target="_blank">Privacy Policy</a>. I understand that my registration is subject to availability and conference guidelines.
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <button type="submit">Register Now</button>
+                </form>
             </div>
-
-            <!-- Email -->
-            <div>
-                <label for="email">Email Address:</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-
-            <!-- Password -->
-            <div>
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-
-            <!-- Confirm Password -->
-            <div>
-                <label for="confirm-password">Confirm Password:</label>
-                <input type="password" id="confirm-password" name="confirm-password" required>
-            </div>
-
-            <!-- Terms and Conditions -->
-            <div>
-                <input type="checkbox" id="terms" name="terms" required>
-                <label for="terms">I agree to the Terms and Conditions</label>
-            </div>
-
-            <!-- Submit Button -->
-            <div>
-                <button type="submit">Register Now</button>
-            </div>
-        </form>
+        </div>
     </main>
 
-    <!-- Footer -->
     <footer>
-        <p>&copy; 2024 TechCon. All rights reserved.</p>
+        <div class="container">
+            <p>&copy; 2024 TechCon 2024. All rights reserved. Copyright TechCon Conference Series.</p>
+        </div>
     </footer>
 </body>
 </html>
