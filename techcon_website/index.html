@@ -3,48 +3,302 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TechCon 2024 - Home</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>About TechCon 2024</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            min-height: 100vh;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)" /></svg>');
+            opacity: 0.3;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        nav {
+            margin-top: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            background: rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        nav a:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        nav a:focus {
+            outline: 2px solid #ffd700;
+            outline-offset: 2px;
+        }
+
+        main {
+            padding: 3rem 2rem;
+            background: white;
+        }
+
+        section {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        section h2 {
+            font-size: 2.5rem;
+            color: #2a5298;
+            margin-bottom: 2rem;
+            font-weight: 600;
+        }
+
+        section p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 3rem;
+            text-align: left;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .video-container {
+            position: relative;
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin: 2rem 0;
+        }
+
+        video {
+            width: 100%;
+            max-width: 700px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        .video-description {
+            margin-top: 1rem;
+            font-size: 0.95rem;
+            color: #666;
+            font-style: italic;
+        }
+
+        footer {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: auto;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #ffd700 0%, #ffed4e 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            nav ul {
+                gap: 1rem;
+            }
+            
+            nav a {
+                padding: 0.6rem 1.2rem;
+                font-size: 1rem;
+            }
+            
+            main {
+                padding: 2rem 1rem;
+            }
+            
+            section h2 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Accessibility improvements */
+        @media (prefers-reduced-motion: reduce) {
+            nav a {
+                transition: none;
+            }
+            
+            nav a:hover {
+                transform: none;
+            }
+        }
+
+        /* High contrast mode support */
+        @media (prefers-contrast: high) {
+            nav a {
+                border: 2px solid white;
+                background: rgba(0,0,0,0.8);
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <h1>Welcome to TechCon 2024</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="schedule.html">Schedule</a></li>
-                <li><a href="register.html">Register</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+    <div class="container">
+        <header>
+            <h1>About TechCon 2024</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="schedule.html">Schedule</a></li>
+                    <li><a href="register.html">Register</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
 
-    <!-- Main Content -->
-    <main>
-        <section>
-            <h2>About TechCon 2024</h2>
-            <p>TechCon 2024 brings together innovators, industry leaders, and technology enthusiasts 
-               from around the globe. Join us for inspiring keynotes, engaging panels, and hands-on 
-               workshops that explore the future of technology.</p>
-        </section>
+        <main>
+            <!-- History Article -->
+            <article>
+                <h2>Our History</h2>
+                <p>TechCon began in 2005 as a small gathering of technology enthusiasts and innovators.
+                    Over the years, it has grown into one of the most influential technology conferences worldwide,
+                    attracting industry leaders, startups, and visionaries who come together to share ideas that shape the future.</p>
+                <img src="images/techcon-history.jpg" alt="Historic photo of the first TechCon conference" style="max-width: 100%; height: auto; border-radius: 10px; margin: 1rem 0;">
+            </article>
 
-        <!-- Embedded Promotional Video -->
-        <section>
-            <h2>Watch Our Promo</h2>
-            <video controls width="600">
-                <source src="media/techcon-promo.mp4" type="video/mp4">
-                <source src="media/techcon-promo.webm" type="video/webm">
-                Your browser does not support the video tag. 
-                <a href="media/techcon-promo.mp4">Download the video here</a>.
-            </video>
-        </section>
-    </main>
+            <!-- Mission Article -->
+            <article>
+                <h2>Our Mission</h2>
+                <p>At TechCon, our mission is to empower innovators, foster collaboration, and drive technological 
+                    advancements that make the world better. We believe in the power of technology to create solutions 
+                    for global challenges, inspire creativity, and connect people across boundaries.</p>
+                <img src="images/mission.jpg" alt="Symbolic image representing innovation and collaboration" style="max-width: 100%; height: auto; border-radius: 10px; margin: 1rem 0;">
+            </article>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2024 TechCon. All rights reserved.</p>
-    </footer>
+            <!-- Conference Promotional Video Section -->
+            <section>
+                <h2>Conference Overview</h2>
+                <p>Watch our promotional video to get a glimpse of what makes TechCon 2024 special. See highlights from previous years, hear from past speakers, and discover what awaits you at this year's conference.</p>
+                
+                <div class="video-container">
+                    <video controls preload="metadata" aria-describedby="video-description">
+                        <source src="techcon2024-promo.mp4" type="video/mp4">
+                        <source src="techcon2024-promo.webm" type="video/webm">
+                        <track kind="subtitles" src="techcon2024-promo-en.vtt" srclang="en" label="English" default>
+                        <track kind="descriptions" src="techcon2024-promo-desc.vtt" srclang="en" label="Audio Description">
+                        <p>Your browser does not support the video element. Please <a href="techcon2024-promo.mp4">download the promotional video</a> to learn more about TechCon 2024.</p>
+                    </video>
+                    <p id="video-description" class="video-description">
+                        Watch our exciting promotional video featuring highlights from previous conferences, speaker testimonials, and a preview of what's coming to TechCon 2024.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Past Speakers Article -->
+            <article>
+                <h2>Notable Past Speakers</h2>
+                <section>
+                    <h3>Dr. Ada Lovelace Jr.</h3>
+                    <img src="images/ada-lovelace.jpg" alt="Photo of Dr. Ada Lovelace Jr." style="max-width: 200px; height: auto; border-radius: 10px; margin: 1rem 0;">
+                    <p>Dr. Lovelace Jr., an AI pioneer, has inspired countless developers with her groundbreaking research
+                       in ethical artificial intelligence and machine learning applications in healthcare.</p>
+                </section>
+                <section>
+                    <h3>Elon Tusk</h3>
+                    <img src="images/elon-tusk.jpg" alt="Photo of Elon Tusk" style="max-width: 200px; height: auto; border-radius: 10px; margin: 1rem 0;">
+                    <p>Entrepreneur and innovator, Elon Tusk, has transformed industries from clean energy to space exploration,
+                       and shared insights at TechCon on the future of interplanetary travel.</p>
+                </section>
+                <section>
+                    <h3>Grace Hopper III</h3>
+                    <img src="images/grace-hopper.jpg" alt="Photo of Grace Hopper III" style="max-width: 200px; height: auto; border-radius: 10px; margin: 1rem 0;">
+                    <p>A leader in computer science education, Grace Hopper III has advanced programming literacy across the globe
+                       and delivered inspiring keynote speeches at TechCon.</p>
+                </section>
+            </article>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 TechCon. All rights reserved.</p>
+        </footer>
+    </div>
 </body>
 </html>
