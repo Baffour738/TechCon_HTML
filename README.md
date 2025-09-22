@@ -79,6 +79,3 @@ This project gave me solid experience with **HTML fundamentals** and helped me u
 
 ---
 
-## 📜 License
-
-This project is for learning purposes. Anyone is welcome to explore or extend it for practice.
